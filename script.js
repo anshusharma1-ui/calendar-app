@@ -75,8 +75,8 @@ async function saveEventsToFirebase() {
 
     try {
 
-        await setDoc(
-            doc(window.db, "calendar", "events"),
+        await window.setDoc(
+    window.doc(window.db, "calendar", "events"),
             {
                 events: events
             }
@@ -92,28 +92,6 @@ async function saveEventsToFirebase() {
             "Firestore Save Error:",
             error
         );
-
-    }
-
-}
-async function saveEventsToFirebase() {
-
-    try {
-
-        await setDoc(
-            doc(db, "calendar", "events"),
-            {
-                events: events
-            }
-        );
-
-        console.log(
-            "Events Saved To Firestore"
-        );
-
-    } catch(error) {
-
-        console.error(error);
 
     }
 
