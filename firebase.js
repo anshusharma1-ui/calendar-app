@@ -1,7 +1,10 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 
 import {
-  getFirestore
+  getFirestore,
+  doc,
+  setDoc,
+  getDoc
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -16,7 +19,13 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-export const db = getFirestore(app);
+const db = getFirestore(app);
+
+// Global access for script.js
+window.db = db;
+window.doc = doc;
+window.setDoc = setDoc;
+window.getDoc = getDoc;
 
 console.log("Firebase Connected");
 console.log("Firestore Ready");
