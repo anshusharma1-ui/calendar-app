@@ -72,6 +72,9 @@ function saveEvents() {
     );
 }
 async function saveEventsToFirebase() {
+    console.log("window.db =", window.db);
+console.log("window.doc =", window.doc);
+console.log("window.setDoc =", window.setDoc);
 
     console.log("Firebase Function Started");
 
