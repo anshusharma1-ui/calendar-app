@@ -76,6 +76,31 @@ async function saveEventsToFirebase() {
     try {
 
         await setDoc(
+            doc(window.db, "calendar", "events"),
+            {
+                events: events
+            }
+        );
+
+        console.log(
+            "Events Saved To Firestore"
+        );
+
+    } catch(error) {
+
+        console.error(
+            "Firestore Save Error:",
+            error
+        );
+
+    }
+
+}
+async function saveEventsToFirebase() {
+
+    try {
+
+        await setDoc(
             doc(db, "calendar", "events"),
             {
                 events: events
@@ -630,6 +655,8 @@ saveEventBtn.addEventListener(
 }
 
         saveEvents();
+
+        saveEventsToFirebase();
 
         modal.style.display = "none";
 
