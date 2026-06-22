@@ -73,18 +73,22 @@ function saveEvents() {
 }
 async function saveEventsToFirebase() {
 
+    console.log("Firebase Function Started");
+
     try {
 
         await window.setDoc(
-    window.doc(window.db, "calendar", "events"),
+            window.doc(
+                window.db,
+                "calendar",
+                "events"
+            ),
             {
                 events: events
             }
         );
 
-        console.log(
-            "Events Saved To Firestore"
-        );
+        console.log("Events Saved To Firestore");
 
     } catch(error) {
 
@@ -584,6 +588,7 @@ e.stopPropagation();
 saveEventBtn.addEventListener(
     "click",
     () => {
+        console.log("Save Button Clicked");
         if(selectedDate === null){
 
     alert("Please select a date first");
