@@ -71,6 +71,28 @@ function saveEvents() {
         JSON.stringify(events)
     );
 }
+async function saveEventsToFirebase() {
+
+    try {
+
+        await setDoc(
+            doc(db, "calendar", "events"),
+            {
+                events: events
+            }
+        );
+
+        console.log(
+            "Events Saved To Firestore"
+        );
+
+    } catch(error) {
+
+        console.error(error);
+
+    }
+
+}
 closeModal.addEventListener("click", () => {
 
     modal.style.display = "none";
@@ -537,6 +559,7 @@ e.stopPropagation();
     }
 
     saveEvents();
+    saveEventsToFirebase();
 
     showEvents(eventKey);
 
