@@ -1,7 +1,3 @@
-console.log("SCRIPT VERSION 2");
-git add .
-git commit -m "script updated"
-git push
 let editIndex = null;
 let selectedDate = null;
 const monthViewBtn =
@@ -107,6 +103,40 @@ console.log("window.setDoc =", window.setDoc);
     }
 
 }
+async function loadEventsFromFirebase(){
+
+    try{
+
+        const docSnap = await window.getDoc(
+            window.doc(
+                window.db,
+                "calendar",
+                "events"
+            )
+        );
+
+        if(docSnap.exists()){
+
+    events = docSnap.data().events || {};
+
+    localStorage.setItem(
+        "calendarEvents",
+        JSON.stringify(events)
+    );
+
+    console.log("Events Loaded From Firebase");
+
+}
+    }catch(error){
+
+        console.error(
+            "Firebase Load Error:",
+            error
+        );
+
+    }
+
+}
 closeModal.addEventListener("click", () => {
 
     modal.style.display = "none";
@@ -170,12 +200,11 @@ function renderWeekView(){
         );
 
         const key =
-        `${date.getFullYear()}-${
-        date.getMonth()
-        }-${
-        date.getDate()
-        }`;
-
+`${date.getFullYear()}-${
+String(date.getMonth() + 1).padStart(2,"0")
+}-${
+String(date.getDate()).padStart(2,"0")
+}`;
         const box =
         document.createElement("div");
         box.addEventListener("click", () => {
@@ -246,7 +275,7 @@ new Date(selectedDate)
 );
    dayView.innerHTML = `
 <h2 class="day-view-title">
-${selectedDate}
+${formattedDate}
 </h2>
 `;
 
@@ -262,15 +291,16 @@ ${selectedDate}
 }
 
     if(
-        !events[key] ||
-        events[key].length === 0
-    ){
+    !events[key] ||
+    events[key].length === 0
+){
 
-        dayView.innerHTML =
-        "<h3>No Events Today</h3>";
+    dayView.innerHTML += `
+    <h3>No Events Today</h3>
+    `;
 
-        return;
-    }
+    return;
+}
 
     events[key].forEach(event => {
 
@@ -440,13 +470,6 @@ if(day === 17){
 
     dayBox.appendChild(count);
 }
-
-const realDate =
-`${year}-${
-String(month + 1).padStart(2,"0")
-}-${
-String(day).padStart(2,"0")
-}`;
 if(festivalEvents[eventKey]){
 
     const festivalDiv =
@@ -921,8 +944,16 @@ sidebarTodayBtn.addEventListener("click", () => {
 
 });
 
-loadFestivals(
-currentDate.getFullYear()
-);
+async function startApp(){
 
-renderCalendar();
+    await loadEventsFromFirebase();
+
+    await loadFestivals(
+        currentDate.getFullYear()
+    );
+
+    renderCalendar();
+
+}
+
+startApp();
