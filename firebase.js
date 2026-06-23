@@ -31,12 +31,21 @@ console.log("Firebase Connected");
 console.log("Firestore Ready");
 window.testFirebase = async () => {
   try {
-    await setDoc(doc(db, "test", "demo"), {
-      name: "Anshu"
-    });
+
+    await setDoc(
+      doc(db, "test", "demo"),
+      {
+        name: "Anshu",
+        time: Date.now()
+      }
+    );
 
     console.log("TEST SUCCESS");
+
   } catch (e) {
+
     console.error("TEST ERROR", e);
+
   }
 };
+
