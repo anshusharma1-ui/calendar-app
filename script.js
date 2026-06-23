@@ -1,3 +1,7 @@
+console.log("SCRIPT VERSION 2");
+git add .
+git commit -m "script updated"
+git push
 let editIndex = null;
 let selectedDate = null;
 const monthViewBtn =
