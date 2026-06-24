@@ -956,4 +956,6 @@ async function startApp(){
 
 }
 
-startApp();
+window.addEventListener("load", () => {
+    startApp();
+});
