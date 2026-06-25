@@ -1,3 +1,10 @@
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 
 import {
@@ -20,6 +27,18 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
+const auth = getAuth(app);
+
+const provider =
+new GoogleAuthProvider();
+
+window.auth = auth;
+window.provider = provider;
+
+window.signInWithPopup =
+signInWithPopup;
+
+window.signOut = signOut;
 
 // Global access for script.js
 window.db = db;
@@ -48,4 +67,3 @@ window.testFirebase = async () => {
 
   }
 };
-
