@@ -48,6 +48,11 @@ const createBtn =
 document.getElementById("createBtn");
 const searchInput =
 document.getElementById("searchInput");
+const loginBtn =
+document.getElementById("loginBtn");
+
+const logoutBtn =
+document.getElementById("logoutBtn");
 const tooltip = document.getElementById("tooltip");
 const eventsList =
 document.getElementById("eventsList");
@@ -958,4 +963,40 @@ async function startApp(){
 
 window.addEventListener("load", () => {
     startApp();
+});
+loginBtn.addEventListener(
+"click",
+async () => {
+
+try{
+
+const result =
+await window.signInWithPopup(
+window.auth,
+window.provider
+);
+
+alert(
+"Welcome " +
+result.user.displayName
+);
+
+}
+catch(error){
+
+console.error(error);
+
+}
+
+});
+logoutBtn.addEventListener(
+"click",
+async () => {
+
+await window.signOut(
+window.auth
+);
+
+alert("Logged Out");
+
 });
