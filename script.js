@@ -115,6 +115,7 @@ console.log("window.setDoc =", window.setDoc);
 
 }
 async function loadEventsFromFirebase(){
+    console.log("Current User:", window.currentUser);
     if(!window.currentUser){
 
     return;
