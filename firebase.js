@@ -2,7 +2,8 @@ import {
   getAuth,
   GoogleAuthProvider,
   signInWithPopup,
-  signOut
+  signOut,
+  onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
@@ -67,3 +68,28 @@ window.testFirebase = async () => {
 
   }
 };
+window.signOut = signOut;
+window.currentUser = null;
+
+onAuthStateChanged(auth, (user) => {
+
+    if(user){
+
+        window.currentUser = user;
+
+        console.log(
+            "Logged In:",
+            user.uid
+        );
+
+    }else{
+
+        window.currentUser = null;
+
+        console.log(
+            "No User Logged In"
+        );
+
+    }
+
+});
