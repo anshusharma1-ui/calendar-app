@@ -82,15 +82,21 @@ console.log("window.doc =", window.doc);
 console.log("window.setDoc =", window.setDoc);
 
     console.log("Firebase Function Started");
+    if(!window.currentUser){
+
+    alert("Please Login First");
+
+    return;
+}
 
     try {
 
         await window.setDoc(
             window.doc(
-                window.db,
-                "calendar",
-                "events"
-            ),
+    window.db,
+    "users",
+    window.currentUser.uid
+),
             {
                 events: events
             }
@@ -109,16 +115,20 @@ console.log("window.setDoc =", window.setDoc);
 
 }
 async function loadEventsFromFirebase(){
+    if(!window.currentUser){
+
+    return;
+}
 
     try{
 
         const docSnap = await window.getDoc(
-            window.doc(
-                window.db,
-                "calendar",
-                "events"
-            )
-        );
+    window.doc(
+        window.db,
+        "users",
+        window.currentUser.uid
+    )
+);
 
         if(docSnap.exists()){
 
@@ -980,6 +990,9 @@ alert(
 "Welcome " +
 result.user.displayName
 );
+await loadEventsFromFirebase();
+
+renderCalendar();
 
 }
 catch(error){
