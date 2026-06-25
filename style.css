@@ -710,3 +710,35 @@ border-radius:15px;
 
     white-space:nowrap;
 }
+#loginBtn,
+#logoutBtn{
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+#loginBtn{
+
+    background:#4285F4;
+
+    color:white;
+
+}
+
+#logoutBtn{
+
+    background:#ff4d6d;
+
+    color:white;
+
+}
