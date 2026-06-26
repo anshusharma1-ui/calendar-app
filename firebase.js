@@ -71,7 +71,7 @@ window.testFirebase = async () => {
 window.signOut = signOut;
 window.currentUser = null;
 
-onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(auth, async (user) => {
 
     if(user){
 
@@ -81,6 +81,12 @@ onAuthStateChanged(auth, (user) => {
             "Logged In:",
             user.uid
         );
+
+        // User ke events load karo
+        await window.loadEventsFromFirebase();
+
+        // Calendar refresh karo
+        window.renderCalendar();
 
     }else{
 
