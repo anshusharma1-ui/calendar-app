@@ -293,24 +293,27 @@
 <script src="script.js"></script>
 <script>
 if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    if ("serviceWorker" in navigator) {
 
-window.addEventListener("load", async () => {
+    window.addEventListener("load", async () => {
 
-const reg =
-await navigator.serviceWorker.register(
-"./service-worker.js"
-);
+        try {
 
-reg.update();
+            const reg = await navigator.serviceWorker.register("./service-worker.js");
 
-});
+            console.log("Service Worker Registered");
+
+            await reg.update();
+
+        } catch (error) {
+
+            console.error("Service Worker Error:", error);
+
+        }
+
+    });
 
 }
-      then(() => console.log("Service Worker Registered"));
-  });
-}
+</script>
 </script>
 
 </body>
