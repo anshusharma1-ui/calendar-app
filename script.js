@@ -153,6 +153,7 @@ async function loadEventsFromFirebase(){
     }
 
 }
+window.loadEventsFromFirebase = loadEventsFromFirebase;
 closeModal.addEventListener("click", () => {
 
     modal.style.display = "none";
@@ -630,6 +631,7 @@ e.stopPropagation();
         daysContainer.appendChild(dayBox);
     }
 }
+window.renderCalendar = renderCalendar;
 
 saveEventBtn.addEventListener(
     "click",
@@ -962,7 +964,6 @@ sidebarTodayBtn.addEventListener("click", () => {
 
 async function startApp(){
 
-    await loadEventsFromFirebase();
 
     await loadFestivals(
         currentDate.getFullYear()
