@@ -53,6 +53,17 @@ document.getElementById("loginBtn");
 
 const logoutBtn =
 document.getElementById("logoutBtn");
+const userInfo =
+document.getElementById("userInfo");
+
+const userPhoto =
+document.getElementById("userPhoto");
+
+const userName =
+document.getElementById("userName");
+
+const userEmail =
+document.getElementById("userEmail");
 const tooltip = document.getElementById("tooltip");
 const eventsList =
 document.getElementById("eventsList");
