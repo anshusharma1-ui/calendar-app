@@ -164,6 +164,46 @@ async function loadEventsFromFirebase(){
 
 }
 window.loadEventsFromFirebase = loadEventsFromFirebase;
+function startRealtimeSync(){
+
+    if(!window.currentUser){
+
+        return;
+
+    }
+
+    onSnapshot(
+
+        window.doc(
+            window.db,
+            "users",
+            window.currentUser.uid
+        ),
+
+        (docSnap) => {
+
+            if(docSnap.exists()){
+
+                events = docSnap.data().events || {};
+
+                localStorage.setItem(
+                    "calendarEvents",
+                    JSON.stringify(events)
+                );
+
+                renderCalendar();
+
+                console.log(
+                    "Realtime Sync Updated"
+                );
+
+            }
+
+        }
+
+    );
+
+}
 closeModal.addEventListener("click", () => {
 
     modal.style.display = "none";
