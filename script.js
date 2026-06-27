@@ -107,6 +107,11 @@ window.addEventListener("online", () => {
 
     console.log("Internet Connected");
 
+    showInternetStatus(
+        "🟢 Internet Connected",
+        "#22c55e"
+    );
+
 });
 
 window.addEventListener("offline", () => {
@@ -115,8 +120,12 @@ window.addEventListener("offline", () => {
 
     console.log("Internet Disconnected");
 
-});
+    showInternetStatus(
+        "🔴 Internet Disconnected",
+        "#ef4444"
+    );
 
+});
 function saveEvents() {
     localStorage.setItem(
         "calendarEvents",
