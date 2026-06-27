@@ -1059,6 +1059,7 @@ sidebarTodayBtn.addEventListener("click", () => {
 
 });
 async function requestNotificationPermission(){
+    console.log("Notification Function Called");
 
     if(!("Notification" in window)){
 
