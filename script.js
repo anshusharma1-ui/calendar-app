@@ -79,6 +79,22 @@ let searchText = "";
 let currentView = "month";
 
 let festivalEvents = {};
+let isOnline = navigator.onLine;
+window.addEventListener("online", () => {
+
+    isOnline = true;
+
+    console.log("Internet Connected");
+
+});
+
+window.addEventListener("offline", () => {
+
+    isOnline = false;
+
+    console.log("Internet Disconnected");
+
+});
 
 function saveEvents() {
     localStorage.setItem(
