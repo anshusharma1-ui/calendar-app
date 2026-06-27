@@ -1201,6 +1201,10 @@ async function startApp(){
 
     renderCalendar();
 
+    checkEventReminders();
+
+    setInterval(checkEventReminders, 60000);
+
 }
 window.addEventListener("load", () => {
     startApp();
