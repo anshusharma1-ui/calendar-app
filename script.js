@@ -1106,6 +1106,23 @@ function showTestNotification(){
     );
 
 }
+function showEventNotification(title, body){
+
+    if(Notification.permission !== "granted"){
+
+        return;
+
+    }
+
+    new Notification(title, {
+
+        body: body,
+
+        icon: "favicon-32x32.png"
+
+    });
+
+}
 
 async function startApp(){
 
