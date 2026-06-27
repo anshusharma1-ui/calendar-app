@@ -80,6 +80,7 @@ let currentView = "month";
 
 let festivalEvents = {};
 let isOnline = navigator.onLine;
+console.log("Current Internet Status:", isOnline);
 window.addEventListener("online", () => {
 
     isOnline = true;
