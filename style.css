@@ -804,3 +804,29 @@ border-radius:15px;
     }
 
 }
+#userInfo{
+    text-align:center;
+    padding:15px;
+    margin-bottom:15px;
+}
+
+#userPhoto{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #5b6cff;
+    margin-bottom:10px;
+}
+
+#userName{
+    margin:5px 0;
+    font-size:18px;
+    font-weight:bold;
+}
+
+#userEmail{
+    margin:0;
+    font-size:14px;
+    color:#888;
+}
