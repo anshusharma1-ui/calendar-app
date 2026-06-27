@@ -1195,7 +1195,6 @@ String(now.getDate()).padStart(2,"0")
 async function startApp(){
 
     await requestNotificationPermission();
-    showTestNotification();
 
     await loadFestivals();
 
