@@ -98,3 +98,4 @@ onAuthStateChanged(auth, async (user) => {
     }
 
 });
+console.log("Firebase.js Loaded");
