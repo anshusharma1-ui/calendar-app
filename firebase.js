@@ -46,6 +46,7 @@ window.db = db;
 window.doc = doc;
 window.setDoc = setDoc;
 window.getDoc = getDoc;
+window.onSnapshot = onSnapshot;
 
 console.log("Firebase Connected");
 console.log("Firestore Ready");
