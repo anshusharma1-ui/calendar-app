@@ -560,6 +560,7 @@ if(day === 17){
     eventInput.value = "";
     eventTime.value = "";
     eventDesc.value = "";
+    eventReminder.value = "0";
 
     modal.style.display = "flex";
 
@@ -854,6 +855,7 @@ String(today.getDate()).padStart(2,"0")
     eventInput.value = "";
     eventTime.value = "";
     eventDesc.value = "";
+    eventReminder.value = "0";
 
     modal.style.display = "flex";
 
