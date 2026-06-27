@@ -1021,5 +1021,10 @@ window.auth
 );
 
 alert("Logged Out");
+    document.getElementById("userPhoto").src = "";
+
+document.getElementById("userName").textContent = "";
+
+document.getElementById("userEmail").textContent = "";
 
 });
