@@ -95,8 +95,11 @@ document.getElementById("logoutBtn").style.display =
 
         console.log("Logged In:", user.uid);
 
-        await window.loadEventsFromFirebase();
+      await window.loadEventsFromFirebase();
+        // Realtime Sync Start
+        window.startRealtimeSync();
 
+        // Calendar refresh karo
         window.renderCalendar();
 
     }else{
