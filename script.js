@@ -66,7 +66,6 @@ JSON.parse(localStorage.getItem("calendarEvents")) || {};
 let currentDate = new Date();
 let searchText = "";
 let currentView = "month";
-const API_KEY = "jpihddqq3MvCK1Obd7vonVQrTiBg2asN";
 
 let festivalEvents = {};
 
@@ -697,14 +696,12 @@ saveEventBtn.addEventListener(
 
 prevBtn.addEventListener(
     "click",
-    () => {
+    async () => {
 
         currentDate.setMonth(
             currentDate.getMonth() - 1
         );
-        loadFestivals(
-currentDate.getFullYear()
-);
+       await loadFestivals();
 
         renderCalendar();
     }
@@ -712,14 +709,12 @@ currentDate.getFullYear()
 
 nextBtn.addEventListener(
     "click",
-    () => {
+    async () => {
 
         currentDate.setMonth(
             currentDate.getMonth() + 1
         );
-        loadFestivals(
-currentDate.getFullYear()
-);
+        await loadFestivals();
 
         renderCalendar();
     }
@@ -970,7 +965,6 @@ async function startApp(){
 
 
     await loadFestivals();
-    );
 
     renderCalendar();
 
