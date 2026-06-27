@@ -1084,13 +1084,13 @@ async function requestNotificationPermission(){
 
 async function startApp(){
 
+    await requestNotificationPermission();
 
     await loadFestivals();
 
     renderCalendar();
 
 }
-
 window.addEventListener("load", () => {
     startApp();
 });
