@@ -77,33 +77,24 @@ onAuthStateChanged(auth, async (user) => {
 
         window.currentUser = user;
 
-        console.log(
-            "Logged In:",
-            user.uid
-        );
+        console.log("Logged In:", user.uid);
 
-        // User ke events load karo
         await window.loadEventsFromFirebase();
 
-        // Calendar refresh karo
         window.renderCalendar();
-      await window.loadEventsFromFirebase();
-
-if(window.renderCalendar){
-    window.renderCalendar();
-}
-
-document.getElementById("loadingScreen").style.display = "none";
 
     }else{
 
         window.currentUser = null;
 
-        console.log(
-            "No User Logged In"
-        );
-      document.getElementById("loadingScreen").style.display = "none";
+        console.log("No User Logged In");
 
+    }
+
+    const loading = document.getElementById("loadingScreen");
+
+    if (loading) {
+        loading.style.display = "none";
     }
 
 });
