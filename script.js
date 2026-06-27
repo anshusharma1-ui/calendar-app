@@ -22,6 +22,8 @@ const importFile =
 document.getElementById("importFile");
 const eventCategory =
 document.getElementById("eventCategory");
+const eventReminder =
+document.getElementById("eventReminder");
 const filterCategory =
 document.getElementById("filterCategory");
 
@@ -756,7 +758,10 @@ saveEventBtn.addEventListener(
 
     color : eventColor.value,
 
-    category : eventCategory.value
+    category : eventCategory.value,
+
+    reminder : Number(eventReminder.value)
+
 };
         if(!events[selectedDate]){
 
