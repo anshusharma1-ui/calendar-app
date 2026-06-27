@@ -80,6 +80,26 @@ let currentView = "month";
 
 let festivalEvents = {};
 let isOnline = navigator.onLine;
+const internetStatus =
+document.getElementById("internetStatus");
+
+function showInternetStatus(message, color){
+
+    internetStatus.textContent = message;
+
+    internetStatus.style.background = color;
+
+    internetStatus.style.display = "block";
+
+    clearTimeout(window.internetStatusTimer);
+
+    window.internetStatusTimer = setTimeout(() => {
+
+        internetStatus.style.display = "none";
+
+    }, 3000);
+
+}
 console.log("Current Internet Status:", isOnline);
 window.addEventListener("online", () => {
 
