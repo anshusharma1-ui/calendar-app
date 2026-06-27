@@ -172,7 +172,7 @@ function startRealtimeSync(){
 
     }
 
-    onSnapshot(
+    window.onSnapshot(
 
         window.doc(
             window.db,
