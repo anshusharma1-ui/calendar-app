@@ -71,7 +71,7 @@ window.testFirebase = async () => {
 window.signOut = signOut;
 window.currentUser = null;
 
-nAuthStateChanged(auth, async (user) => {
+onAuthStateChanged(auth, async (user) => {
 
     if(user){
 
