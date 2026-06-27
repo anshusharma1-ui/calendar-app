@@ -77,6 +77,7 @@ let events =
 JSON.parse(localStorage.getItem("calendarEvents")) || {};
 
 let currentDate = new Date();
+let notifiedEvents = {};
 let searchText = "";
 let currentView = "month";
 
@@ -1119,6 +1120,73 @@ function showEventNotification(title, body){
         body: body,
 
         icon: "favicon-32x32.png"
+
+    });
+
+}
+function checkEventReminders(){
+
+    const now = new Date();
+
+    const todayKey =
+`${now.getFullYear()}-${
+String(now.getMonth()+1).padStart(2,"0")
+}-${
+String(now.getDate()).padStart(2,"0")
+}`;
+
+    if(!events[todayKey]){
+
+        return;
+
+    }
+
+    events[todayKey].forEach(event => {
+
+        if(!event.time){
+
+            return;
+
+        }
+
+        const [hour, minute] =
+        event.time.split(":").map(Number);
+
+        const eventTime =
+        new Date(now);
+
+        eventTime.setHours(hour);
+        eventTime.setMinutes(minute);
+        eventTime.setSeconds(0);
+
+        const reminderTime =
+        new Date(
+            eventTime.getTime() -
+            (event.reminder || 0) * 60000
+        );
+
+        const id =
+        todayKey +
+        event.title +
+        event.time;
+
+        if(
+            now >= reminderTime &&
+            now < new Date(reminderTime.getTime()+60000) &&
+            !notifiedEvents[id]
+        ){
+
+            showEventNotification(
+
+                "📅 " + event.title,
+
+                "Event starts at " + event.time
+
+            );
+
+            notifiedEvents[id] = true;
+
+        }
 
     });
 
