@@ -1082,10 +1082,28 @@ async function requestNotificationPermission(){
     }
 
 }
+function showTestNotification(){
+
+    if(Notification.permission !== "granted"){
+
+        return;
+
+    }
+
+    new Notification(
+        "📅 Anshu Calendar",
+        {
+            body: "Notification Successfully Working!",
+            icon: "favicon-32x32.png"
+        }
+    );
+
+}
 
 async function startApp(){
 
     await requestNotificationPermission();
+    showTestNotification();
 
     await loadFestivals();
 
