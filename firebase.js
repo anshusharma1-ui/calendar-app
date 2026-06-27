@@ -87,6 +87,13 @@ onAuthStateChanged(auth, async (user) => {
 
         // Calendar refresh karo
         window.renderCalendar();
+      await window.loadEventsFromFirebase();
+
+if(window.renderCalendar){
+    window.renderCalendar();
+}
+
+document.getElementById("loadingScreen").style.display = "none";
 
     }else{
 
@@ -95,6 +102,7 @@ onAuthStateChanged(auth, async (user) => {
         console.log(
             "No User Logged In"
         );
+      document.getElementById("loadingScreen").style.display = "none";
 
     }
 
