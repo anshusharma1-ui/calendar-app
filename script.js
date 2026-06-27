@@ -760,20 +760,15 @@ String(today.getDate()).padStart(2,"0")
     modal.style.display = "flex";
 
 });
-async function loadFestivals(year){
+async function loadFestivals() {
 
-    try{
+    try {
 
-        const response = await fetch(
-            `https://calendarific.com/api/v2/holidays?api_key=${API_KEY}&country=IN&year=${year}`
-        );
+        const response = await fetch("./festivals.json");
 
-        if(!response.ok){
+        if (!response.ok) {
 
-            console.warn(
-                "Festival API Error:",
-                response.status
-            );
+            console.warn("Festival JSON not found!");
 
             festivalEvents = {};
 
@@ -783,38 +778,16 @@ async function loadFestivals(year){
 
         }
 
-        const data = await response.json();
+        festivalEvents = await response.json();
 
-        festivalEvents = {};
-
-        if(
-            data.response &&
-            data.response.holidays
-        ){
-
-            data.response.holidays.forEach(holiday => {
-
-                festivalEvents[holiday.date.iso] =
-                holiday.name;
-
-            });
-
-        }
-
-        console.log(
-            "Festival Data:",
-            festivalEvents
-        );
+        console.log("Festival Data:", festivalEvents);
 
         renderCalendar();
 
     }
-    catch(error){
+    catch (error) {
 
-        console.error(
-            "Festival Load Error:",
-            error
-        );
+        console.error("Festival Load Error:", error);
 
         festivalEvents = {};
 
