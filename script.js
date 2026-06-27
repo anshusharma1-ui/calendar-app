@@ -1058,6 +1058,29 @@ sidebarTodayBtn.addEventListener("click", () => {
     renderCalendar();
 
 });
+async function requestNotificationPermission(){
+
+    if(!("Notification" in window)){
+
+        console.log("Browser Notification Support Nahi Hai");
+
+        return;
+
+    }
+
+    if(Notification.permission === "default"){
+
+        const permission =
+        await Notification.requestPermission();
+
+        console.log(
+            "Notification Permission:",
+            permission
+        );
+
+    }
+
+}
 
 async function startApp(){
 
