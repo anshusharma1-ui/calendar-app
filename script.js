@@ -768,16 +768,43 @@ async function loadFestivals(year){
             `https://calendarific.com/api/v2/holidays?api_key=${API_KEY}&country=IN&year=${year}`
         );
 
+        if(!response.ok){
+
+            console.warn(
+                "Festival API Error:",
+                response.status
+            );
+
+            festivalEvents = {};
+
+            renderCalendar();
+
+            return;
+
+        }
+
         const data = await response.json();
 
         festivalEvents = {};
 
-        data.response.holidays.forEach(holiday => {
+        if(
+            data.response &&
+            data.response.holidays
+        ){
 
-            festivalEvents[holiday.date.iso] = holiday.name;
+            data.response.holidays.forEach(holiday => {
 
-        });
-        console.log("Festival Data:", festivalEvents);
+                festivalEvents[holiday.date.iso] =
+                holiday.name;
+
+            });
+
+        }
+
+        console.log(
+            "Festival Data:",
+            festivalEvents
+        );
 
         renderCalendar();
 
@@ -788,6 +815,10 @@ async function loadFestivals(year){
             "Festival Load Error:",
             error
         );
+
+        festivalEvents = {};
+
+        renderCalendar();
 
     }
 
