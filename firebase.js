@@ -71,11 +71,27 @@ window.testFirebase = async () => {
 window.signOut = signOut;
 window.currentUser = null;
 
-onAuthStateChanged(auth, async (user) => {
+nAuthStateChanged(auth, async (user) => {
 
     if(user){
 
         window.currentUser = user;
+        document.getElementById("userInfo").style.display = "block";
+
+document.getElementById("userPhoto").src =
+user.photoURL;
+
+document.getElementById("userName").textContent =
+user.displayName;
+
+document.getElementById("userEmail").textContent =
+user.email;
+
+document.getElementById("loginBtn").style.display =
+"none";
+
+document.getElementById("logoutBtn").style.display =
+"inline-block";
 
         console.log("Logged In:", user.uid);
 
@@ -86,6 +102,14 @@ onAuthStateChanged(auth, async (user) => {
     }else{
 
         window.currentUser = null;
+        document.getElementById("userInfo").style.display =
+"none";
+
+document.getElementById("loginBtn").style.display =
+"inline-block";
+
+document.getElementById("logoutBtn").style.display =
+"none";
 
         console.log("No User Logged In");
 
