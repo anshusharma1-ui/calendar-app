@@ -969,8 +969,7 @@ sidebarTodayBtn.addEventListener("click", () => {
 async function startApp(){
 
 
-    await loadFestivals(
-        currentDate.getFullYear()
+    await loadFestivals();
     );
 
     renderCalendar();
