@@ -134,6 +134,29 @@ document.getElementById("logoutBtn").style.display =
 
 });
 console.log("Firebase.js Loaded");
+
+async function registerMessagingServiceWorker() {
+
+    try {
+
+        const registration = await navigator.serviceWorker.register(
+            "./firebase-messaging-sw.js"
+        );
+
+        console.log("FCM Service Worker Registered");
+
+        return registration;
+
+    } catch (error) {
+
+        console.error(
+            "FCM Service Worker Error:",
+            error
+        );
+
+    }
+
+}
 async function getFCMToken() {
 
     try {
