@@ -9,6 +9,11 @@ import {
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 
 import {
+  getMessaging,
+  getToken
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-messaging.js";
+
+import {
   getFirestore,
   doc,
   setDoc,
