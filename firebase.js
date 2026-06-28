@@ -109,6 +109,7 @@ document.getElementById("logoutBtn").style.display =
 
         // Calendar refresh karo
         window.renderCalendar();
+       await getFCMToken();
 
     }else{
 
