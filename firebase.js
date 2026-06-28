@@ -179,6 +179,8 @@ const token = await getToken(messaging, {
             console.log("FCM Token:");
             console.log(token);
 
+          await saveFCMToken(token);
+
         } else {
 
             console.log("No FCM Token Available");
