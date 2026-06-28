@@ -134,3 +134,31 @@ document.getElementById("logoutBtn").style.display =
 
 });
 console.log("Firebase.js Loaded");
+async function getFCMToken() {
+
+    try {
+
+        const token = await getToken(messaging, {
+
+            vapidKey: "BMpWdYAXDkho2nOd9UcGxu5KcGh_Cdcu0s2Ev9njyhJoZwb_8ZxL1mBbfhwxeGdvtFcW9ghLN-Z4GHWh92dtBCA"
+
+        });
+
+        if (token) {
+
+            console.log("FCM Token:");
+            console.log(token);
+
+        } else {
+
+            console.log("No FCM Token Available");
+
+        }
+
+    } catch (error) {
+
+        console.error("FCM Token Error:", error);
+
+    }
+
+}
