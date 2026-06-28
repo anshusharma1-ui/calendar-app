@@ -141,8 +141,8 @@ async function registerMessagingServiceWorker() {
     try {
 
         const registration = await navigator.serviceWorker.register(
-            "./firebase-messaging-sw.js"
-        );
+    "/calendar-app/firebase-messaging-sw.js"
+);
 
         console.log("FCM Service Worker Registered");
 
