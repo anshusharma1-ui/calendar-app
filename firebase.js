@@ -192,3 +192,32 @@ const token = await getToken(messaging, {
     }
 
 }
+async function saveFCMToken(token) {
+
+    if (!window.currentUser) return;
+
+    try {
+
+        await setDoc(
+
+            doc(db, "tokens", window.currentUser.uid),
+
+            {
+
+                token: token,
+
+                updatedAt: Date.now()
+
+            }
+
+        );
+
+        console.log("FCM Token Saved");
+
+    } catch (error) {
+
+        console.error("Token Save Error:", error);
+
+    }
+
+}
