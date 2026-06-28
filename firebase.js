@@ -161,11 +161,16 @@ async function getFCMToken() {
 
     try {
 
-        const token = await getToken(messaging, {
+        const registration =
+await registerMessagingServiceWorker();
 
-            vapidKey: "BMpWdYAXDkho2nOd9UcGxu5KcGh_Cdcu0s2Ev9njyhJoZwb_8ZxL1mBbfhwxeGdvtFcW9ghLN-Z4GHWh92dtBCA"
+const token = await getToken(messaging, {
 
-        });
+    vapidKey: "BMpWdYAXDkho2nOd9UcGxu5KcGh_Cdcu0s2Ev9njyhJoZwb_8ZxL1mBbfhwxeGdvtFcW9ghLN-Z4GHWh92dtBCA",
+
+    serviceWorkerRegistration: registration
+
+});
 
         if (token) {
 
