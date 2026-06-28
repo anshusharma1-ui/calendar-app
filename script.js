@@ -1125,6 +1125,7 @@ function showEventNotification(title, body){
 
 }
 function checkEventReminders(){
+    console.log("Reminder Checker Running");
 
     const now = new Date();
 
