@@ -1143,6 +1143,7 @@ String(now.getDate()).padStart(2,"0")
     }
 
     events[todayKey].forEach(event => {
+        console.log(event);
 
         if(!event.time){
 
