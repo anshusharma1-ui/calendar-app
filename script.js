@@ -1115,6 +1115,8 @@ function showEventNotification(title, body){
 
     }
 
+    console.log("Notification Sent:", title);
+
     new Notification(title, {
 
         body: body,
