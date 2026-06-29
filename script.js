@@ -1511,7 +1511,7 @@ const eventData = {
 
     color: "#5b6cff",
 
-    category: "Personal",
+    category: category,
 
     reminder: 10
 
