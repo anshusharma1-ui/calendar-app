@@ -1480,6 +1480,23 @@ for (const word of studyWords) {
 }
 
 console.log("Detected Category:", category);
+    // Color Detect
+
+let color = "#7a42ff"; // Personal = Purple
+
+if (category === "Work") {
+
+    color = "#4285F4"; // Blue
+
+}
+
+else if (category === "Study") {
+
+    color = "#00b894"; // Green
+
+}
+
+console.log("Detected Color:", color);
 
     if (!eventDate) {
 
@@ -1509,7 +1526,7 @@ const eventData = {
 
     desc: "",
 
-    color: "#5b6cff",
+    color: color,
 
     category: category,
 
