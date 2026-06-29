@@ -1454,7 +1454,7 @@ const eventData = {
 
     time: timeString,
 
-    desc: text,
+    desc: "",
 
     color: "#5b6cff",
 
