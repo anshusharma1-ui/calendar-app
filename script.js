@@ -751,19 +751,19 @@ saveEventBtn.addEventListener(
 
         const eventData = {
 
-    title : title,
+    title: eventInput.value.trim(),
 
-    time : eventTime.value,
+    time: eventTime.value,
 
-    desc : eventDesc.value,
+    desc: eventDesc.value,
 
-    color : eventColor.value,
+    color: eventColor.value,
 
-    category : eventCategory.value,
+    category: eventCategory.value,
 
-    reminder : Number(eventReminder.value),
+    reminder: Number(eventReminder.value),
 
-    repeat : document.getElementById("eventRepeat").value
+    repeat: document.getElementById("eventRepeat").value
 
 };
         if(!events[selectedDate]){
@@ -1514,6 +1514,13 @@ const timeString =
 `${String(eventHour || 0).padStart(2,"0")}:${
 String(eventMinute || 0).padStart(2,"0")
 }`;
+    if (!eventInput.value.trim()) {
+
+    alert("Please enter event title");
+
+    return;
+
+}
 
 const eventData = {
 
@@ -1527,7 +1534,11 @@ const eventData = {
 
     category: category,
 
-    reminder: 10
+    reminder: 10,
+
+    repeat: "none",
+
+    createdBy: "AI"
 
 };
 
