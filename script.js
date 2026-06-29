@@ -1454,7 +1454,7 @@ const eventData = {
 
     time: timeString,
 
-    desc: "Created by AI",
+    desc: text,
 
     color: "#5b6cff",
 
