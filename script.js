@@ -1404,5 +1404,28 @@ console.log("Detected Time:", eventHour, eventMinute);
         console.log("No Date Found");
 
     }
+    // Event Title Detect
+
+let title = text;
+
+title = title.replace(/kal/gi, "");
+title = title.replace(/aaj/gi, "");
+title = title.replace(/parso/gi, "");
+title = title.replace(/today/gi, "");
+title = title.replace(/tomorrow/gi, "");
+
+title = title.replace(/subah/gi, "");
+title = title.replace(/shaam/gi, "");
+title = title.replace(/raat/gi, "");
+title = title.replace(/dopahar/gi, "");
+
+title = title.replace(/\d{1,2}(:\d{2})?/g, "");
+title = title.replace(/baje/gi, "");
+title = title.replace(/am/gi, "");
+title = title.replace(/pm/gi, "");
+
+title = title.trim();
+
+console.log("Detected Title:", title);
 
 }
