@@ -1427,6 +1427,59 @@ title = title.replace(/pm/gi, "");
 title = title.trim();
 
 console.log("Detected Title:", title);
+    // Category Detect
+
+let category = "Personal";
+
+const workWords = [
+    "office",
+    "meeting",
+    "client",
+    "boss",
+    "project",
+    "interview",
+    "job",
+    "work"
+];
+
+const studyWords = [
+    "study",
+    "exam",
+    "class",
+    "school",
+    "college",
+    "homework",
+    "assignment",
+    "test",
+    "math",
+    "science",
+    "physics",
+    "chemistry"
+];
+
+for (const word of workWords) {
+
+    if (input.includes(word)) {
+
+        category = "Work";
+        break;
+
+    }
+
+}
+
+for (const word of studyWords) {
+
+    if (input.includes(word)) {
+
+        category = "Study";
+        break;
+
+    }
+
+}
+
+console.log("Detected Category:", category);
 
     if (!eventDate) {
 
