@@ -1260,3 +1260,32 @@ document.getElementById("userName").textContent = "";
 document.getElementById("userEmail").textContent = "";
 
 });
+// AI Modal Open
+
+aiEventBtn.addEventListener("click", () => {
+
+    aiModal.style.display = "flex";
+
+    aiPrompt.focus();
+
+});
+
+// AI Modal Close
+
+closeAiModal.addEventListener("click", () => {
+
+    aiModal.style.display = "none";
+
+});
+
+// Outside Click Close
+
+window.addEventListener("click", (e) => {
+
+    if (e.target === aiModal) {
+
+        aiModal.style.display = "none";
+
+    }
+
+});
