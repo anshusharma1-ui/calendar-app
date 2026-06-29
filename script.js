@@ -749,11 +749,6 @@ saveEventBtn.addEventListener(
     return;
 }
 
-        const title =
-            eventInput.value.trim();
-
-        if(!title) return;
-
         const eventData = {
 
     title : title,
@@ -766,7 +761,9 @@ saveEventBtn.addEventListener(
 
     category : eventCategory.value,
 
-    reminder : Number(eventReminder.value)
+    reminder : Number(eventReminder.value),
+
+    repeat : document.getElementById("eventRepeat").value
 
 };
         if(!events[selectedDate]){
