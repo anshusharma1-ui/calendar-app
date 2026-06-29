@@ -1289,3 +1289,26 @@ window.addEventListener("click", (e) => {
     }
 
 });
+const generateAiEvent = document.getElementById("generateAiEvent");
+
+generateAiEvent.addEventListener("click", () => {
+
+    const text = aiPrompt.value.trim();
+
+    if (!text) {
+
+        alert("Please write your event.");
+
+        return;
+
+    }
+
+    parseAIEvent(text);
+
+});
+
+function parseAIEvent(text) {
+
+    console.log("AI Input:", text);
+
+}
