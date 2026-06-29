@@ -1318,6 +1318,7 @@ let eventHour = null;
 let eventMinute = 0;
 
 const timeMatch = input.match(/(\d{1,2})(?::(\d{2}))?/);
+    console.log("Time Match:", timeMatch);
 
 if (timeMatch) {
 
