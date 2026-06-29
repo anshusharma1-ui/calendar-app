@@ -1,5 +1,9 @@
 let editIndex = null;
 let selectedDate = null;
+const aiEventBtn = document.getElementById("aiEventBtn");
+const aiModal = document.getElementById("aiModal");
+const closeAiModal = document.getElementById("closeAiModal");
+const aiPrompt = document.getElementById("aiPrompt");
 const monthViewBtn =
 document.getElementById("monthViewBtn");
 const agendaView =
