@@ -1311,4 +1311,48 @@ function parseAIEvent(text) {
 
     console.log("AI Input:", text);
 
+    const input = text.toLowerCase();
+
+    let eventDate = null;
+
+    if (
+        input.includes("today") ||
+        input.includes("aaj")
+    ) {
+
+        eventDate = new Date();
+
+    }
+
+    else if (
+        input.includes("tomorrow") ||
+        input.includes("kal")
+    ) {
+
+        eventDate = new Date();
+
+        eventDate.setDate(eventDate.getDate() + 1);
+
+    }
+
+    else if (
+        input.includes("parso")
+    ) {
+
+        eventDate = new Date();
+
+        eventDate.setDate(eventDate.getDate() + 2);
+
+    }
+
+    if (eventDate) {
+
+        console.log("Detected Date:", eventDate);
+
+    } else {
+
+        console.log("No Date Found");
+
+    }
+
 }
