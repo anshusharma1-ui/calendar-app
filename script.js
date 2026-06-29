@@ -1428,4 +1428,60 @@ title = title.trim();
 
 console.log("Detected Title:", title);
 
+    if (!eventDate) {
+
+    alert("Date samajh nahi aayi.");
+
+    return;
+
+}
+
+const dateKey =
+`${eventDate.getFullYear()}-${
+String(eventDate.getMonth() + 1).padStart(2,"0")
+}-${
+String(eventDate.getDate()).padStart(2,"0")
+}`;
+
+const timeString =
+`${String(eventHour || 0).padStart(2,"0")}:${
+String(eventMinute || 0).padStart(2,"0")
+}`;
+
+const eventData = {
+
+    title: title || "New Event",
+
+    time: timeString,
+
+    desc: "Created by AI",
+
+    color: "#5b6cff",
+
+    category: "Personal",
+
+    reminder: 10
+
+};
+
+if (!events[dateKey]) {
+
+    events[dateKey] = [];
+
+}
+
+events[dateKey].push(eventData);
+
+saveEvents();
+
+saveEventsToFirebase();
+
+renderCalendar();
+
+aiModal.style.display = "none";
+
+aiPrompt.value = "";
+
+alert("✅ AI Event Created Successfully");
+
 }
