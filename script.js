@@ -1312,6 +1312,55 @@ function parseAIEvent(text) {
     console.log("AI Input:", text);
 
     const input = text.toLowerCase();
+    // TIME PARSER
+
+let eventHour = null;
+let eventMinute = 0;
+
+const timeMatch = input.match(/(\d{1,2})(?::(\d{2}))?/);
+
+if (timeMatch) {
+
+    eventHour = parseInt(timeMatch[1]);
+
+    if (timeMatch[2]) {
+
+        eventMinute = parseInt(timeMatch[2]);
+
+    }
+
+    // PM
+    if (
+        input.includes("pm") ||
+        input.includes("shaam") ||
+        input.includes("raat")
+    ) {
+
+        if (eventHour < 12) {
+
+            eventHour += 12;
+
+        }
+
+    }
+
+    // AM
+    if (
+        input.includes("am") ||
+        input.includes("subah")
+    ) {
+
+        if (eventHour === 12) {
+
+            eventHour = 0;
+
+        }
+
+    }
+
+}
+
+console.log("Detected Time:", eventHour, eventMinute);
 
     let eventDate = null;
 
