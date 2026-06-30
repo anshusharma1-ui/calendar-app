@@ -1508,6 +1508,39 @@ console.log("Detected Time:", eventHour, eventMinute);
 
     }
 
+    // Date Detect (15 August, 1 July etc.)
+
+const monthNames = {
+
+    january:0,
+    february:1,
+    march:2,
+    april:3,
+    may:4,
+    june:5,
+    july:6,
+    august:7,
+    september:8,
+    october:9,
+    november:10,
+    december:11
+
+};
+
+const dateMatch = input.match(/(\d{1,2})\s+(january|february|march|april|may|june|july|august|september|october|november|december)/);
+
+if (dateMatch) {
+
+    const day = parseInt(dateMatch[1]);
+
+    const month = monthNames[dateMatch[2]];
+
+    const year = new Date().getFullYear();
+
+    eventDate = new Date(year, month, day);
+
+}
+
     if (eventDate) {
 
         console.log("Detected Date:", eventDate);
@@ -1537,6 +1570,10 @@ title = title.replace(/baje/gi, "");
 title = title.replace(/am/gi, "");
 title = title.replace(/pm/gi, "");
 
+    title = title.replace(
+/\d{1,2}\s+(january|february|march|april|may|june|july|august|september|october|november|december)/gi,
+""
+);
 title = title.trim();
 
 console.log("Detected Title:", title);
