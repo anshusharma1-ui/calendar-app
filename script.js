@@ -71,6 +71,11 @@ document.getElementById("userName");
 const userEmail =
 document.getElementById("userEmail");
 const tooltip = document.getElementById("tooltip");
+const undoToast =
+document.getElementById("undoToast");
+
+const undoBtn =
+document.getElementById("undoBtn");
 const eventsList =
 document.getElementById("eventsList");
 
@@ -257,6 +262,21 @@ function startRealtimeSync(){
         }
 
     );
+
+}
+function showUndoToast(){
+
+    undoToast.style.display = "flex";
+
+    clearTimeout(undoTimer);
+
+    undoTimer = setTimeout(() => {
+
+        undoToast.style.display = "none";
+
+        lastDeletedEvent = null;
+
+    }, 5000);
 
 }
 window.startRealtimeSync = startRealtimeSync;
@@ -787,6 +807,16 @@ e.stopPropagation();
 
     tooltip.style.display = "none";
 
+                           lastDeletedEvent = {
+
+    date: eventKey,
+
+    index: index,
+
+    event: {...events[eventKey][index]}
+
+};
+
     events[eventKey]
         .splice(index,1);
 
@@ -803,6 +833,7 @@ e.stopPropagation();
     showEvents(eventKey);
 
     renderCalendar();
+                           showUndoToast();
 }
                     }
                 );
