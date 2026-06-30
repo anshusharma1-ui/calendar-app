@@ -1610,6 +1610,70 @@ else if (category === "Study") {
 }
 
 console.log("Detected Color:", color);
+    // Repeat Detect
+
+let repeat = "none";
+
+if (
+    input.includes("har roz") ||
+    input.includes("daily") ||
+    input.includes("every day")
+) {
+
+    repeat = "daily";
+
+}
+
+else if (
+    input.includes("har monday") ||
+    input.includes("har tuesday") ||
+    input.includes("har wednesday") ||
+    input.includes("har thursday") ||
+    input.includes("har friday") ||
+    input.includes("har saturday") ||
+    input.includes("har sunday") ||
+    input.includes("every monday") ||
+    input.includes("every tuesday") ||
+    input.includes("every wednesday") ||
+    input.includes("every thursday") ||
+    input.includes("every friday") ||
+    input.includes("every saturday") ||
+    input.includes("every sunday")
+) {
+
+    repeat = "weekly";
+
+}
+
+else if (
+
+    input.includes("monthly") ||
+
+    input.includes("har mahina")
+
+) {
+
+    repeat = "monthly";
+
+}
+
+else if (
+
+    input.includes("birthday") ||
+
+    input.includes("janamdin") ||
+
+    input.includes("yearly") ||
+
+    input.includes("har saal")
+
+) {
+
+    repeat = "yearly";
+
+}
+
+console.log("Detected Repeat:", repeat);
 
     if (!eventDate) {
 
@@ -1652,7 +1716,7 @@ const eventData = {
 
     reminder: 10,
 
-    repeat: "none",
+    repeat: repeat,
 
     createdBy: "AI"
 
