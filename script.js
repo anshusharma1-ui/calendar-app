@@ -610,9 +610,72 @@ if(festivalEvents[eventKey]){
     );
 
 }
-        if(events[eventKey]){
+        let dayEvents = [...(events[eventKey] || [])];
+        Object.keys(events).forEach(originalDate => {
 
-            events[eventKey].forEach((event,index)=>{
+    events[originalDate].forEach(event => {
+
+        if (!event.repeat || event.repeat === "none") {
+
+            return;
+
+        }
+
+        const original = new Date(originalDate);
+        const current = new Date(eventKey);
+
+        let show = false;
+
+        if (event.repeat === "daily") {
+
+            show = current > original;
+
+        }
+
+        else if (event.repeat === "weekly") {
+
+            show =
+                current > original &&
+                current.getDay() === original.getDay();
+
+        }
+
+        else if (event.repeat === "monthly") {
+
+            show =
+                current > original &&
+                current.getDate() === original.getDate();
+
+        }
+
+        else if (event.repeat === "yearly") {
+
+            show =
+                current > original &&
+                current.getDate() === original.getDate() &&
+                current.getMonth() === original.getMonth();
+
+        }
+
+        if (show) {
+
+            dayEvents.push({
+
+                ...event,
+
+                repeated: true
+
+            });
+
+        }
+
+    });
+
+});
+
+if(events[eventKey]){
+
+    dayEvents.forEach((event,index)=>{
                 if(
     selectedCategory !== "All" &&
     event.category !== selectedCategory
@@ -633,6 +696,13 @@ if(festivalEvents[eventKey]){
                     document.createElement("div");
 
                 eventDiv.classList.add("event-dot");
+                if (event.repeated) {
+
+    eventDiv.style.opacity = "0.75";
+
+    eventDiv.style.border = "1px dashed white";
+
+}
 
              eventDiv.textContent =
 (event.title || "").length > 15
@@ -653,6 +723,14 @@ eventDiv.addEventListener("dblclick", (e) => {
     eventTime.value = event.time || "";
     eventDesc.value = event.desc || "";
     eventColor.value = event.color || "#5b6cff";
+    eventCategory.value =
+event.category || "Personal";
+
+eventReminder.value =
+event.reminder || 0;
+
+document.getElementById("eventRepeat").value =
+event.repeat || "none";
 
     modal.style.display = "flex";
 });
@@ -858,6 +936,11 @@ String(today.getDate()).padStart(2,"0")
     eventTime.value = "";
     eventDesc.value = "";
     eventReminder.value = "0";
+    eventCategory.value = "Personal";
+
+eventColor.value = "#5b6cff";
+
+document.getElementById("eventRepeat").value = "none";
 
     modal.style.display = "flex";
 
@@ -1549,12 +1632,22 @@ if (!events[dateKey]) {
 }
 
 events[dateKey].push(eventData);
+events[dateKey].sort((a, b) => {
+
+    return (a.time || "")
+        .localeCompare(b.time || "");
+
+});
 
 saveEvents();
 
 saveEventsToFirebase();
 
+selectedDate = dateKey;
+
 renderCalendar();
+
+showEvents(dateKey);
 
 aiModal.style.display = "none";
 
