@@ -82,6 +82,8 @@ JSON.parse(localStorage.getItem("calendarEvents")) || {};
 
 let currentDate = new Date();
 let notifiedEvents = {};
+let lastDeletedEvent = null;
+let undoTimer = null;
 let searchText = "";
 let currentView = "month";
 
