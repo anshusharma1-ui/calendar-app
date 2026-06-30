@@ -1675,6 +1675,87 @@ else if (
 
 console.log("Detected Repeat:", repeat);
 
+    // Weekday Detect
+
+const weekDays = [
+
+    "sunday",
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday"
+
+];
+
+for (let i = 0; i < weekDays.length; i++) {
+
+    if (input.includes(weekDays[i])) {
+
+        const today = new Date();
+
+        eventDate = new Date(today);
+
+        while (eventDate.getDay() !== i) {
+
+            eventDate.setDate(
+                eventDate.getDate() + 1
+            );
+
+        }
+
+        break;
+
+    }
+
+}
+    const hindiWeekDays = {
+
+    "ravivar": 0,
+    "itwar": 0,
+
+    "somvar": 1,
+    "somvaar": 1,
+
+    "mangalvar": 2,
+
+    "budhvar": 3,
+
+    "guruvar": 4,
+    "guruwar": 4,
+
+    "shukravar": 5,
+
+    "shanivar": 6
+
+};
+
+for (const dayName in hindiWeekDays) {
+
+    if (input.includes(dayName)) {
+
+        const today = new Date();
+
+        eventDate = new Date(today);
+
+        while (
+            eventDate.getDay() !==
+            hindiWeekDays[dayName]
+        ) {
+
+            eventDate.setDate(
+                eventDate.getDate() + 1
+            );
+
+        }
+
+        break;
+
+    }
+
+}
+
     if (!eventDate) {
 
     alert("Date samajh nahi aayi.");
