@@ -859,8 +859,17 @@ saveEventBtn.addEventListener(
 
     return;
 }
+const title = eventInput.value.trim();
 
-        const eventData = {
+if (!title) {
+
+    alert("Please enter event title");
+
+    return;
+
+}
+
+       const eventData = {
 
     title: eventInput.value.trim(),
 
