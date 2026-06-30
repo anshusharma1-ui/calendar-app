@@ -862,21 +862,19 @@ saveEventBtn.addEventListener(
 
         const eventData = {
 
-    title: title,
+    title: eventInput.value.trim(),
 
-    time: timeString,
+    time: eventTime.value,
 
-    desc: "",
+    desc: eventDesc.value,
 
-    color: color,
+    color: eventColor.value,
 
-    category: category,
+    category: eventCategory.value,
 
-    reminder: 10,
+    reminder: Number(eventReminder.value),
 
-    repeat: document.getElementById("eventRepeat").value,
-
-    createdBy: "AI"
+    repeat: document.getElementById("eventRepeat").value
 
 };
         if(!events[selectedDate]){
