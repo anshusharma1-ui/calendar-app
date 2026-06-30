@@ -1528,7 +1528,8 @@ const monthNames = {
 };
 
 const dateMatch = input.match(/(\d{1,2})\s+(january|february|march|april|may|june|july|august|september|october|november|december)/);
-
+console.log("Date Match:", dateMatch);
+    
 if (dateMatch) {
 
     const day = parseInt(dateMatch[1]);
@@ -1538,6 +1539,8 @@ if (dateMatch) {
     const year = new Date().getFullYear();
 
     eventDate = new Date(year, month, day);
+
+    console.log("Detected Month Date:", eventDate);
 
 }
 
