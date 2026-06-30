@@ -807,7 +807,7 @@ e.stopPropagation();
 
     tooltip.style.display = "none";
 
-                           lastDeletedEvent = {
+    lastDeletedEvent = {
 
     date: eventKey,
 
@@ -833,7 +833,7 @@ e.stopPropagation();
     showEvents(eventKey);
 
     renderCalendar();
-                           showUndoToast();
+    showUndoToast();
 }
                     }
                 );
@@ -862,19 +862,21 @@ saveEventBtn.addEventListener(
 
         const eventData = {
 
-    title: eventInput.value.trim(),
+    title: title,
 
-    time: eventTime.value,
+    time: timeString,
 
-    desc: eventDesc.value,
+    desc: "",
 
-    color: eventColor.value,
+    color: color,
 
-    category: eventCategory.value,
+    category: category,
 
-    reminder: Number(eventReminder.value),
+    reminder: 10,
 
-    repeat: document.getElementById("eventRepeat").value
+    repeat: document.getElementById("eventRepeat").value,
+
+    createdBy: "AI"
 
 };
         if(!events[selectedDate]){
@@ -1529,7 +1531,7 @@ const monthNames = {
 
 const dateMatch = input.match(/(\d{1,2})\s+(january|february|march|april|may|june|july|august|september|october|november|december)/);
 console.log("Date Match:", dateMatch);
-    
+
 if (dateMatch) {
 
     const day = parseInt(dateMatch[1]);
@@ -1573,7 +1575,7 @@ title = title.replace(/baje/gi, "");
 title = title.replace(/am/gi, "");
 title = title.replace(/pm/gi, "");
 
-    title = title.replace(
+title = title.replace(
 /\d{1,2}\s+(january|february|march|april|may|june|july|august|september|october|november|december)/gi,
 ""
 );
@@ -1650,7 +1652,7 @@ else if (category === "Study") {
 }
 
 console.log("Detected Color:", color);
-    // Repeat Detect
+// Repeat Detect
 
 let repeat = "none";
 
@@ -1715,7 +1717,7 @@ else if (
 
 console.log("Detected Repeat:", repeat);
 
-    // Weekday Detect
+// Weekday Detect
 
 const weekDays = [
 
@@ -1750,7 +1752,7 @@ for (let i = 0; i < weekDays.length; i++) {
     }
 
 }
-    const hindiWeekDays = {
+const hindiWeekDays = {
 
     "ravivar": 0,
     "itwar": 0,
@@ -1815,13 +1817,6 @@ const timeString =
 `${String(eventHour || 0).padStart(2,"0")}:${
 String(eventMinute || 0).padStart(2,"0")
 }`;
-    if (!eventInput.value.trim()) {
-
-    alert("Please enter event title");
-
-    return;
-
-}
 
 const eventData = {
 
