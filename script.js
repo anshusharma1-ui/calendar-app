@@ -1689,3 +1689,46 @@ aiPrompt.value = "";
 alert("✅ AI Event Created Successfully");
 
 }
+undoBtn.addEventListener("click", () => {
+
+    if (!lastDeletedEvent) {
+
+        return;
+
+    }
+
+    if (!events[lastDeletedEvent.date]) {
+
+        events[lastDeletedEvent.date] = [];
+
+    }
+
+    events[lastDeletedEvent.date].splice(
+
+        lastDeletedEvent.index,
+
+        0,
+
+        lastDeletedEvent.event
+
+    );
+
+    saveEvents();
+
+    saveEventsToFirebase();
+
+    renderCalendar();
+
+    if (selectedDate === lastDeletedEvent.date) {
+
+        showEvents(selectedDate);
+
+    }
+
+    undoToast.style.display = "none";
+
+    clearTimeout(undoTimer);
+
+    lastDeletedEvent = null;
+
+});
