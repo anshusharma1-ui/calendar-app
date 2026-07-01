@@ -707,6 +707,31 @@ if(festivalEvents[eventKey]){
     "🎉 " +
     festivalEvents[eventKey];
 
+    festivalDiv.style.cursor = "pointer";
+
+festivalDiv.addEventListener("click", (e) => {
+
+    e.stopPropagation();
+
+    tooltip.innerHTML = `
+        <b>🎉 Festival</b><br>
+        ${festivalEvents[eventKey]}
+    `;
+
+    const rect = festivalDiv.getBoundingClientRect();
+
+    tooltip.style.display = "block";
+
+    tooltip.style.left = rect.left + "px";
+    tooltip.style.top = (rect.bottom + 10) + "px";
+
+});
+festivalDiv.addEventListener("mouseleave", () => {
+
+    tooltip.style.display = "none";
+
+});
+
     dayBox.appendChild(
         festivalDiv
     );
