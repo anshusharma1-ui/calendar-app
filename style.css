@@ -1033,3 +1033,8 @@ border-radius:15px;
     }
 
 }
+.theme-btn:hover{
+
+    transform:scale(1.08);
+
+}
