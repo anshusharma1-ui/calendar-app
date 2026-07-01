@@ -479,6 +479,68 @@ ${formattedDate}
     });
 
 }
+function renderAgendaView() {
+
+    agendaView.innerHTML = "";
+
+    const allEvents = [];
+
+    Object.keys(events).forEach(date => {
+
+        events[date].forEach(event => {
+
+            allEvents.push({
+
+                date: date,
+
+                ...event
+
+            });
+
+        });
+
+    });
+
+    allEvents.sort((a, b) => {
+
+        return new Date(a.date + " " + (a.time || "00:00")) -
+               new Date(b.date + " " + (b.time || "00:00"));
+
+    });
+
+    if (allEvents.length === 0) {
+
+        agendaView.innerHTML = "<h3>No Events Found</h3>";
+
+        return;
+
+    }
+
+    allEvents.forEach(event => {
+
+        const card = document.createElement("div");
+
+        card.className = "agenda-card";
+
+        card.innerHTML = `
+
+            <h3>${event.title}</h3>
+
+            <p>📅 ${event.date}</p>
+
+            <p>⏰ ${event.time || "No Time"}</p>
+
+            <p>📂 ${event.category || "General"}</p>
+
+            <p>${event.desc || ""}</p>
+
+        `;
+
+        agendaView.appendChild(card);
+
+    });
+
+}
 
 
 function renderCalendar() {
@@ -504,8 +566,26 @@ function renderCalendar() {
 
     return;
 }
+    if(currentView === "agenda"){
+
+    eventsPanel.style.display = "none";
+
+    daysContainer.style.display = "none";
+
+    weekView.style.display = "none";
+
+    dayView.style.display = "none";
+
+    agendaView.style.display = "block";
+
+    renderAgendaView();
+
+    return;
+
+}
 eventsPanel.style.display = "block";
 dayView.style.display = "none";
+    agendaView.style.display = "none";
     if(currentView === "week"){
 
     daysContainer.style.display =
