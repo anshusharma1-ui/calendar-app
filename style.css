@@ -964,3 +964,72 @@ border-radius:15px;
     font-weight:500;
 
 }
+/* ===========================
+   Mobile Responsive
+=========================== */
+
+@media (max-width: 768px){
+
+    .container{
+
+        flex-direction: column;
+
+    }
+
+    .sidebar{
+
+        width:100%;
+
+        height:auto;
+
+    }
+
+    .main{
+
+        width:100%;
+
+    }
+
+    .topbar{
+
+        flex-direction:column;
+
+        gap:12px;
+
+    }
+
+    .left-top,
+    .center-top,
+    .right-top{
+
+        width:100%;
+
+        justify-content:center;
+
+        display:flex;
+
+        flex-wrap:wrap;
+
+    }
+
+    #days{
+
+        gap:4px;
+
+    }
+
+    .day{
+
+        min-height:80px;
+
+        font-size:12px;
+
+    }
+
+    .events-panel{
+
+        margin-top:20px;
+
+    }
+
+}
