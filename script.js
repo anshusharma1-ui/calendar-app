@@ -40,6 +40,8 @@ const monthYear = document.getElementById("monthYear");
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
 const todayBtn = document.getElementById("todayBtn");
+const themeToggle =
+document.getElementById("themeToggle");
 
 const modal = document.getElementById("eventModal");
 const closeModal = document.getElementById("closeModal");
@@ -2155,5 +2157,44 @@ undoBtn.addEventListener("click", () => {
     clearTimeout(undoTimer);
 
     lastDeletedEvent = null;
+
+});
+// =========================
+// Dark Mode
+// =========================
+
+function applyTheme(theme){
+
+    if(theme === "dark"){
+
+        document.body.classList.add("dark");
+
+        themeToggle.textContent = "☀️";
+
+    }else{
+
+        document.body.classList.remove("dark");
+
+        themeToggle.textContent = "🌙";
+
+    }
+
+}
+
+const savedTheme =
+localStorage.getItem("theme") || "light";
+
+applyTheme(savedTheme);
+
+themeToggle.addEventListener("click", () => {
+
+    const newTheme =
+    document.body.classList.contains("dark")
+    ? "light"
+    : "dark";
+
+    applyTheme(newTheme);
+
+    localStorage.setItem("theme", newTheme);
 
 });
