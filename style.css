@@ -1060,3 +1060,76 @@ border-radius:15px;
     transform:scale(1.08);
 
 }
+/* ===========================
+   Dark Mode
+=========================== */
+
+body.dark{
+
+    background:#121212;
+
+    color:#ffffff;
+
+}
+
+body.dark .sidebar{
+
+    background:#1e1e1e;
+
+}
+
+body.dark .main{
+
+    background:#181818;
+
+}
+
+body.dark .topbar{
+
+    background:#1e1e1e;
+
+}
+
+body.dark .calendar-box{
+
+    background:#1e1e1e;
+
+}
+
+body.dark .events-panel{
+
+    background:#1e1e1e;
+
+}
+
+body.dark .modal-content{
+
+    background:#222;
+
+    color:white;
+
+}
+
+body.dark input,
+body.dark textarea,
+body.dark select{
+
+    background:#2b2b2b;
+
+    color:white;
+
+    border:1px solid #555;
+
+}
+
+body.dark .day{
+
+    background:#242424;
+
+}
+
+body.dark .day.today{
+
+    border:2px solid #5b6cff;
+
+}
