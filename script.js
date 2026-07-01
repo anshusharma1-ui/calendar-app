@@ -926,6 +926,8 @@ e.stopPropagation();
 
         daysContainer.appendChild(dayBox);
     }
+
+        updateStatistics();
 }
 window.renderCalendar = renderCalendar;
 
@@ -1121,6 +1123,45 @@ function renderMiniCalendar(){
         Today: ${today.getDate()}
         </p>
     `;
+}
+function updateStatistics(){
+
+    let total = 0;
+    let personal = 0;
+    let work = 0;
+    let study = 0;
+
+    Object.keys(events).forEach(date => {
+
+        events[date].forEach(event => {
+
+            total++;
+
+            if(event.category === "Personal"){
+
+                personal++;
+
+            }
+            else if(event.category === "Work"){
+
+                work++;
+
+            }
+            else if(event.category === "Study"){
+
+                study++;
+
+            }
+
+        });
+
+    });
+
+    document.getElementById("totalEvents").textContent = total;
+    document.getElementById("personalCount").textContent = personal;
+    document.getElementById("workCount").textContent = work;
+    document.getElementById("studyCount").textContent = study;
+
 }
 filterCategory.addEventListener(
     "change",
