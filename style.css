@@ -1033,6 +1033,28 @@ border-radius:15px;
     }
 
 }
+.theme-btn{
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    background:#5b6cff;
+
+    color:white;
+
+    transition:.3s;
+
+}
+
 .theme-btn:hover{
 
     transform:scale(1.08);
