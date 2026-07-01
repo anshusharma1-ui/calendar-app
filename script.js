@@ -722,8 +722,25 @@ festivalDiv.addEventListener("click", (e) => {
 
     tooltip.style.display = "block";
 
-    tooltip.style.left = rect.left + "px";
-    tooltip.style.top = (rect.bottom + 10) + "px";
+    const tooltipWidth = 240;
+
+let left = rect.left;
+
+if (left + tooltipWidth > window.innerWidth) {
+
+    left = window.innerWidth - tooltipWidth - 15;
+
+}
+
+if (left < 10) {
+
+    left = 10;
+
+}
+
+tooltip.style.left = left + "px";
+
+tooltip.style.top = (rect.bottom + 10) + "px";
 
 });
 festivalDiv.addEventListener("mouseleave", () => {
@@ -878,11 +895,25 @@ event.repeat || "none";
      const rect =
     eventDiv.getBoundingClientRect();
 
-    tooltip.style.left =
-    rect.left + "px";
+    const tooltipWidth = 240;
 
-    tooltip.style.top =
-    (rect.top - tooltip.offsetHeight - 10) + "px";
+let left = rect.left;
+
+if (left + tooltipWidth > window.innerWidth) {
+
+    left = window.innerWidth - tooltipWidth - 15;
+
+}
+
+if (left < 10) {
+
+    left = 10;
+
+}
+
+tooltip.style.left = left + "px";
+
+tooltip.style.top = (rect.bottom + 10) + "px";
 
     tooltip.style.display =
     "block";
