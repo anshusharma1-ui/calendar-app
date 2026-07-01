@@ -1264,6 +1264,15 @@ dayViewBtn.addEventListener("click", () => {
     renderCalendar();
 
 });
+const agendaViewBtn = document.getElementById("agendaViewBtn");
+
+agendaViewBtn.addEventListener("click", () => {
+
+    currentView = "agenda";
+
+    renderCalendar();
+
+});
 
 sidebarTodayBtn.addEventListener("click", () => {
 
