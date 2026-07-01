@@ -566,7 +566,7 @@ function renderCalendar() {
 
     return;
 }
-    if(currentView === "agenda"){
+if(currentView === "agenda"){
 
     eventsPanel.style.display = "none";
 
@@ -585,7 +585,7 @@ function renderCalendar() {
 }
 eventsPanel.style.display = "block";
 dayView.style.display = "none";
-    agendaView.style.display = "none";
+agendaView.style.display = "none";
     if(currentView === "week"){
 
     daysContainer.style.display =
