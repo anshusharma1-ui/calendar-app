@@ -1162,6 +1162,58 @@ function updateStatistics(){
     document.getElementById("workCount").textContent = work;
     document.getElementById("studyCount").textContent = study;
 
+    updateNextEvent();
+
+}
+function updateNextEvent(){
+
+    const nextEventDiv = document.getElementById("nextEvent");
+
+    const now = new Date();
+
+    let upcoming = [];
+
+    Object.keys(events).forEach(date => {
+
+        events[date].forEach(event => {
+
+            const eventDate = new Date(date + "T" + (event.time || "00:00"));
+
+            if(eventDate >= now){
+
+                upcoming.push({
+
+                    ...event,
+
+                    date: date,
+
+                    eventDate: eventDate
+
+                });
+
+            }
+
+        });
+
+    });
+
+    upcoming.sort((a,b)=>a.eventDate-b.eventDate);
+
+    if(upcoming.length === 0){
+
+        nextEventDiv.innerHTML = "No Upcoming Event";
+
+        return;
+
+    }
+
+    const e = upcoming[0];
+
+    nextEventDiv.innerHTML = `
+        <strong>${e.title}</strong><br>
+        📅 ${e.date}<br>
+        ⏰ ${e.time || "No Time"}
+    `;
 }
 filterCategory.addEventListener(
     "change",
